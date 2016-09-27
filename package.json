@@ -1,0 +1,48 @@
+{
+  "name": "react-kakao-login",
+  "version": "1.0.0",
+  "keyword": [
+    "react",
+    "reactjs",
+    "react-component",
+    "kakao",
+    "kakaotalk",
+    "kakao-login",
+    "kakaotalk-login",
+    "react-kakao-login",
+    "react-kakaotalk-login"
+  ],
+  "description": "Login with Kakaotalk",
+  "main": "dist/kakao-login.js",
+  "scripts": {
+    "demo": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --hot --host 0.0.0.0",
+    "bundle": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
+    "lint": "./node_modules/.bin/eslint src/**/*.js || true"
+  },
+  "author": "Jaewon <yocee57@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonism/react-kakao-login.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wonism/react-kakao-login/issues"
+  },
+  "homepage": "https://jaewonism.com",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "eslint": "^3.6.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-react": "^6.3.0",
+    "react": "^15.3.2",
+    "react-css-modules": "^3.7.10",
+    "react-dom": "^15.3.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}
