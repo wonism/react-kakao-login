@@ -68,7 +68,7 @@ class KakaoLogin extends Component {
     return (
       <button
         className={buttonClass}
-        onClick={this.onBtnClick}
+        onClick={this.onBtnClick.bind(this)}
         style={buttonClass ? {} : style}
       >
         {buttonComponent || children || buttonText}
