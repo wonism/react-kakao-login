@@ -27,7 +27,7 @@ class KakaoLogin extends Component {
   onBtnClick() {
     const { getProfile, onSuccess, onFailure } = this.props;
 
-    Kakao.Auth.login({
+    Kakao && Kakao.Auth.login({
       success: (response) => {
         if (getProfile) {
           Kakao.API.request({
