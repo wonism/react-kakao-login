@@ -20,17 +20,17 @@ class KakaoLogin extends Component {
       fjs.parentNode.insertBefore(js, fjs);
       js.onload = cb;
     })(document, 'script', 'kakao-sdk', () => {
-      window.Kakao.init(jsKey);
+      Kakao.init(jsKey);
     });
   }
 
   onBtnClick() {
     const { getProfile, onSuccess, onFailure } = this.props;
 
-    window.Kakao.Auth.login({
+    Kakao.Auth.login({
       success: (response) => {
         if (getProfile) {
-          window.Kakao.API.request({
+          Kakao.API.request({
             url: '/v1/user/me',
             success: (profile) => {
               const result = { response, profile };
