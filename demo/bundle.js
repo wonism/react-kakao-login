@@ -175,7 +175,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement('i', { className: 'xi-kakao', style: style }),
-	        '카카오톡으로 로그인하기'
+	        '\uCE74\uCE74\uC624\uD1A1\uC73C\uB85C \uB85C\uADF8\uC778\uD558\uAE30'
 	      );
 	    }
 	  }]);
@@ -16158,7 +16158,8 @@
 	  if (x === y) {
 	    // Steps 1-5, 7-10
 	    // Steps 6.b-6.e: +0 != -0
-	    return x !== 0 || 1 / x === 1 / y;
+	    // Added the nonzero y check to make Flow happy, but it is redundant
+	    return x !== 0 || y !== 0 || 1 / x === 1 / y;
 	  } else {
 	    // Step 6.a: NaN == NaN
 	    return x !== x && y !== y;
@@ -21628,7 +21629,7 @@
 	        fjs.parentNode.insertBefore(js, fjs);
 	        js.onload = cb;
 	      })(document, 'script', 'kakao-sdk', function () {
-	        window.Kakao.init(jsKey);
+	        Kakao.init(jsKey);
 	      });
 	    }
 	  }, {
@@ -21640,10 +21641,10 @@
 	      var onFailure = _props.onFailure;
 
 
-	      window.Kakao.Auth.login({
+	      Kakao && Kakao.Auth.login({
 	        success: function success(response) {
 	          if (getProfile) {
-	            window.Kakao.API.request({
+	            Kakao.API.request({
 	              url: '/v1/user/me',
 	              success: function success(profile) {
 	                var result = { response: response, profile: profile };
