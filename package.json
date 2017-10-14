@@ -1,6 +1,6 @@
 {
   "name": "react-kakao-login",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keyword": [
     "react",
     "reactjs",
@@ -29,22 +29,29 @@
     "url": "https://github.com/wonism/react-kakao-login/issues"
   },
   "homepage": "https://jaewonism.com",
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
   "devDependencies": {
-    "babel-core": "^6.14.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "eslint": "^3.6.1",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.3.0",
+    "eslint-plugin-react": "^6.10.3",
+    "prop-types": "^15.6.0",
     "react": "^15.3.2",
     "react-css-modules": "^3.7.10",
     "react-dom": "^15.3.2",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack": "^2.7.0",
+    "webpack-dev-server": "^2.9.1"
   },
   "dependencies": {
     "react": "^15.1.0"

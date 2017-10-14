@@ -1,36 +1,51 @@
-'use strict';
-
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   devServer: {
-    contentBase: path.join(__dirname, 'demo'),
+    contentBase: path.resolve('demo'),
+    hot: true,
     inline: true,
     port: 8888,
     historyApiFallback: true,
     compress: false,
   },
-  entry: {
-    demo: [
-      'webpack/hot/dev-server',
-      './demo/index.js'
-    ],
-  },
+  entry: path.resolve('demo/index.jsx'),
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        "NODE_ENV": JSON.stringify('development')
+      }
+    })
+  ],
   module: {
-    loaders: [{
-      loader: 'babel',
+    rules: [{
+      enforce: 'pre',
       test: /\.jsx?$/,
-      exclude: /(node_modules|bower_components)/
+      loader: 'eslint-loader',
+      include: path.resolve('./demo'),
+      options: {
+        failOnWarning: true,
+        failOnError: true,
+        emitWarning: true,
+      },
+    }, {
+      use: 'babel-loader',
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
     }],
   },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['.js', '.jsx'],
+    modules: [
+      'node_modules',
+      path.resolve('demo'),
+    ],
   },
   output: {
-    path: path.join(__dirname, 'demo'),
+    path: path.resolve('demo'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
 };
 

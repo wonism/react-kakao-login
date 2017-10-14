@@ -3,7 +3,7 @@
 
 ## Getting Started
 ```sh
-$ git clone https://github.com/wonism/react-kakao-login.git && cd react-kakao-login
+$ cd /PROJECT/PATH
 $ npm i -S react react-dom react-kakao-login
 ```
 
@@ -11,7 +11,7 @@ $ npm i -S react react-dom react-kakao-login
 ```sh
 $ npm run demo
 ```
-- access [localhost:8888](http://localhost:8888)
+- Open [localhost:8888](http://localhost:8888)
 
 ## Production Bundle
 ```sh
@@ -122,4 +122,3 @@ ReactDOM.render(
   />, appRoot
 );
 ```
-

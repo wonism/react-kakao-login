@@ -1,12 +1,8 @@
-'use strict';
-
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  entry: [
-    './src/index.js'
-  ],
+  entry: './src/index.js',
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
@@ -14,25 +10,38 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ],
   module: {
-    loaders: [{
-      loader: 'babel',
+    rules: [{
+      enforce: 'pre',
+      test: /\.jsx?$/,
+      loader: 'eslint-loader',
+      include: path.resolve('./src'),
+      options: {
+        failOnWarning: true,
+        failOnError: true,
+        emitWarning: true,
+      },
+    }, {
+      use: 'babel-loader',
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/
     }],
   },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['.js', '.jsx'],
+    modules: [
+      'node_modules',
+      path.resolve('demo'),
+    ],
   },
   externals: {
     "react": "react",
     "react-dom": "ReactDOM",
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'kakao-login.js',
     libraryTarget: 'umd',
     library: 'KakaoLogin',

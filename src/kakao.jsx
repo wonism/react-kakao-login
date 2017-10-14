@@ -1,6 +1,25 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, PureComponent } from 'react';
 
-class KakaoLogin extends Component {
+export default class KakaoLogin extends PureComponent {
+  static propTypes = {
+    jsKey: PropTypes.string.isRequired,
+    onSuccess: PropTypes.func.isRequired,
+    onFailure: PropTypes.func.isRequired,
+    buttonComponent: PropTypes.element,
+    children: PropTypes.node,
+    buttonText: PropTypes.string,
+    buttonClass: PropTypes.string,
+    getProfile: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    buttonComponent: null,
+    children: null,
+    buttonText: 'Login with Kakao',
+    buttonClass: '',
+    getProfile: false,
+  };
+
   constructor(props) {
     super(props);
     this.onBtnClick = this.onBtnClick.bind(this);
@@ -76,21 +95,3 @@ class KakaoLogin extends Component {
     );
   }
 }
-
-KakaoLogin.propTypes = {
-  jsKey: PropTypes.string.isRequired,
-  onSuccess: PropTypes.func.isRequired,
-  onFailure: PropTypes.func.isRequired,
-  buttonComponent: PropTypes.element,
-  buttonClass: PropTypes.string,
-  buttonText: PropTypes.string,
-  getProfile: PropTypes.bool,
-  children: React.PropTypes.node,
-};
-
-KakaoLogin.defaultProps = {
-  buttonText: 'Login with Kakao',
-};
-
-export default KakaoLogin;
-

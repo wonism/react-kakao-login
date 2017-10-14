@@ -3,29 +3,27 @@ import ReactDOM from 'react-dom';
 import KakaoLogin from '../src';
 
 const success = (response) => {
-  console.log(response);
+  console.log(response); // eslint-disable-line no-console
 };
 
 const failure = (error) => {
-  console.log(error);
+  console.log(error); // eslint-disable-line no-console
 };
 
 const appRoot = document.getElementById('react-kakao-login');
 
-class LoginButton extends React.Component {
-  render() {
-    const style = {
-      marginRight: '4px',
-    };
+const LoginButton = () => {
+  const style = {
+    marginRight: '4px',
+  };
 
-    return (
-      <div>
-        <i className="xi-kakao" style={style} />
-        카카오톡으로 로그인하기
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <i className="xi-kakao" style={style} />
+      카카오톡으로 로그인하기
+    </div>
+  );
+};
 
 ReactDOM.render(
   <KakaoLogin
@@ -33,7 +31,6 @@ ReactDOM.render(
     onSuccess={success}
     onFailure={failure}
     buttonComponent={<LoginButton />}
-    getProfile={true}
+    getProfile
   />, appRoot
 );
-
