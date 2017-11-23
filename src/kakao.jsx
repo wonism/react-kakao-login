@@ -47,6 +47,7 @@ export default class KakaoLogin extends PureComponent {
     const { getProfile, onSuccess, onFailure } = this.props;
 
     Kakao && Kakao.Auth.login({
+      throughTalk:false,
       success: (response) => {
         if (getProfile) {
           Kakao.API.request({
