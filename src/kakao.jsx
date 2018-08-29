@@ -52,7 +52,7 @@ export default class KakaoLogin extends PureComponent {
       success: (response) => {
         if (getProfile) {
           Kakao.API.request({
-            url: '/v1/user/me',
+            url: '/v2/user/me',
             success: (profile) => {
               const result = { response, profile };
               onSuccess(result);
