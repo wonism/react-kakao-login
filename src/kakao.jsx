@@ -23,18 +23,13 @@ export default class KakaoLogin extends PureComponent {
     getProfile: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.onBtnClick = this.onBtnClick.bind(this);
-  }
-
   componentDidMount() {
     const { jsKey } = this.props;
 
     ((d, s, id, cb) => {
-      const element = d.getElementsByTagName(s)[0];
-      const fjs = element;
-      let js = element;
+      const el = d.getElementsByTagName(s)[0];
+      const fjs = el;
+      let js = el;
 
       js = d.createElement(s);
       js.id = id;
@@ -46,7 +41,7 @@ export default class KakaoLogin extends PureComponent {
     });
   }
 
-  onBtnClick() {
+  onBtnClick = () => {
     const { version, getProfile, onSuccess, onFailure } = this.props;
 
     Kakao && Kakao.Auth.login({
