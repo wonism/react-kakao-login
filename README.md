@@ -25,6 +25,7 @@ $ npm run bundle
 | jsKey            | string     | Required                                        |
 | onSuccess        | function   | Required                                        |
 | onFailure        | function   | Required                                        |
+| version          | string     | One of [`v1`, `v2`]. default is `v2`            |
 | buttonComponent  | element    | -                                               |
 | buttonClass      | string     | -                                               |
 | buttonText       | string     | -                                               |

@@ -1,6 +1,6 @@
 {
   "name": "react-kakao-login",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "keyword": [
     "react",
     "reactjs",
@@ -17,7 +17,7 @@
   "scripts": {
     "demo": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --hot --host 0.0.0.0",
     "bundle": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
-    "lint": "./node_modules/.bin/eslint src/**/*.js || true"
+    "lint": "eslint src/**/*.js || true"
   },
   "author": "Jaewon <yocee57@gmail.com>",
   "license": "MIT",

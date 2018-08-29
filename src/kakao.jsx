@@ -1,19 +1,21 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import { oneOf, bool, string, func, node, element } from 'prop-types';
 
 export default class KakaoLogin extends PureComponent {
   static propTypes = {
-    jsKey: PropTypes.string.isRequired,
-    onSuccess: PropTypes.func.isRequired,
-    onFailure: PropTypes.func.isRequired,
-    buttonComponent: PropTypes.element,
-    children: PropTypes.node,
-    buttonText: PropTypes.string,
-    buttonClass: PropTypes.string,
-    getProfile: PropTypes.bool,
+    jsKey: string.isRequired,
+    onSuccess: func.isRequired,
+    onFailure: func.isRequired,
+    version: oneOf(['v1', 'v2']),
+    buttonComponent: element,
+    children: node,
+    buttonText: string,
+    buttonClass: string,
+    getProfile: bool,
   };
 
   static defaultProps = {
+    version: 'v2',
     buttonComponent: null,
     children: null,
     buttonText: 'Login with Kakao',
@@ -45,14 +47,14 @@ export default class KakaoLogin extends PureComponent {
   }
 
   onBtnClick() {
-    const { getProfile, onSuccess, onFailure } = this.props;
+    const { version, getProfile, onSuccess, onFailure } = this.props;
 
     Kakao && Kakao.Auth.login({
       throughTalk: false,
       success: (response) => {
         if (getProfile) {
           Kakao.API.request({
-            url: '/v2/user/me',
+            url: `/${version}/user/me`,
             success: (profile) => {
               const result = { response, profile };
               onSuccess(result);
