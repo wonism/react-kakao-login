@@ -31,3 +31,8 @@ bower_components/
 # dev
 demo
 src
+.babelrc
+.gitignore
+.travis.yml
+webpack.config.dev.js
+webpack.config.dist.js

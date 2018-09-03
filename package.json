@@ -1,6 +1,6 @@
 {
   "name": "react-kakao-login",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "keyword": [
     "react",
     "reactjs",
@@ -16,9 +16,10 @@
   "main": "dist/kakao-login.js",
   "typings": "./index.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
     "demo": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --hot --host 0.0.0.0",
-    "bundle": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
     "format": "prettier-eslint --eslint-config-path ./.eslintrc --write \"src/**/*.js\"",
+    "build": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
     "lint": "eslint src/**/*.js || true"
   },
   "author": "Jaewon <yocee57@gmail.com>",
@@ -62,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run format"
     }
   }
 }
