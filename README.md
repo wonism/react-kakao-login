@@ -136,7 +136,7 @@ If you're providing all your own custom styling, you can use the render prop bui
   render={renderProps => (
     <button onClick={renderProps.onClick}>This is my custom kakao button</button>
   )}
-/>, appRoot
+/>
 ```
 
 The `render` function will be passed the following properties for you to use:
