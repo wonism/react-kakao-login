@@ -67,6 +67,14 @@ export default class KakaoLogin extends PureComponent {
   }
 
   render() {
+    const { buttonClass, buttonComponent, buttonText, children, render } = this.props;
+
+    if (render && typeof render === 'function') {
+      return render({
+        onClick: this.onBtnClick,
+      });
+    }
+
     const style = {
       display: 'inline-block',
       padding: '0',
@@ -80,8 +88,6 @@ export default class KakaoLogin extends PureComponent {
       fontSize: '16px',
       textAlign: 'center',
     };
-
-    const { buttonClass, buttonComponent, buttonText, children } = this.props;
 
     return (
       <button

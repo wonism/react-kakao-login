@@ -123,3 +123,22 @@ ReactDOM.render(
   />, appRoot
 );
 ```
+
+### Kakao button without styling
+
+If you're providing all your own custom styling, you can use the render prop build. This build doesn't include any CSS or additional code needed to customise the look of the button, and instead leaves that entirely up to you.
+
+```js
+<KakaoLogin
+  jsKey="4a5607f2dc1622d91b7137fff35a464d"
+  onSuccess={success}
+  onFailure={failure}
+  render={renderProps => (
+    <button onClick={renderProps.onClick}>This is my custom kakao button</button>
+  )}
+/>, appRoot
+```
+
+The `render` function will be passed the following properties for you to use:
+
+- `onClick`
