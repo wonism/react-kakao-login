@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { oneOf, bool, string, func, node, element } from 'prop-types';
+import { oneOf, bool, string, func, node } from 'prop-types';
 
 export default class KakaoLogin extends Component {
   static DEFAULT_STYLE = {
@@ -62,26 +62,28 @@ export default class KakaoLogin extends Component {
   onBtnClick = () => {
     const { version, getProfile, onSuccess, onFailure } = this.props;
 
-    Kakao && Kakao.Auth.login({
-      throughTalk: false,
-      success: (response) => {
-        if (getProfile) {
-          Kakao.API.request({
-            url: `/${version}/user/me`,
-            success: (profile) => {
-              const result = { response, profile };
-              onSuccess(result);
-            },
-            fail: (error) => {
-              onFailure(error);
-            },
-          });
-        } else {
-          onSuccess({ response });
-        }
-      },
-      fail: onFailure,
-    });
+    if (Kakao) {
+      Kakao.Auth.login({
+        throughTalk: false,
+        success: (response) => {
+          if (getProfile) {
+            Kakao.API.request({
+              url: `/${version}/user/me`,
+              success: (profile) => {
+                const result = { response, profile };
+                onSuccess(result);
+              },
+              fail: (error) => {
+                onFailure(error);
+              },
+            });
+          } else {
+            onSuccess({ response });
+          }
+        },
+        fail: onFailure,
+      });
+    }
   }
 
   render() {
