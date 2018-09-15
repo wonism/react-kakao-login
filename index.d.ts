@@ -6,13 +6,14 @@ type versionType = 'v1' | 'v2';
 
 export interface KaKaoLoginProps {
   jsKey: string;
-  version?: versionType;
-  buttonComponent?: React.ComponentElement<any, any> | Element | JSX.Element;
-  buttonText?: string;
-  buttonClass?: string;
-  getProfile?: boolean;
   onSuccess(response: KakaoLoginResponseV2 | any): void;
   onFailure(response: any): void;
+  version?: versionType;
+  getProfile?: boolean;
+  useDefaultStyle?: boolean;
+  buttonText?: string;
+  className?: string;
+  render?: (props: any) => React.ComponentElement<any, any> | Element | JSX.Element;
 }
 
 interface UserPropertiesV2 {

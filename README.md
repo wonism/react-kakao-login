@@ -18,76 +18,28 @@ $ npm run demo
 $ npm run bundle
 ```
 
-## How to Use
-### Parameters
+## Parameters
 | Parameter        | Type       | Remarks                                         |
 |:-----------------|:-----------|:------------------------------------------------|
 | jsKey            | string     | Required                                        |
 | onSuccess        | function   | Required                                        |
 | onFailure        | function   | Required                                        |
 | version          | string     | One of [`v1`, `v2`]. default is `v2`            |
-| buttonComponent  | element    | -                                               |
-| buttonClass      | string     | -                                               |
-| buttonText       | string     | -                                               |
 | getProfile       | bool       | If you want to get User's information, set TRUE |
+| useDefaultStyle  | bool       | Optional                                        |
+| buttonText       | string     | Optional                                        |
+| className        | string     | Optional                                        |
+| render           | function   | Optional                                        |
 
-### Basic
+## How to use?
 ```js
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import KakaoLogin from 'react-kakao-login';
-
-const success = (response) => {
-  console.log(response);
-};
-
-const failure = (error) => {
-  console.log(error);
-};
-
-const appRoot = document.getElementById('react-kakao-login');
-
-ReactDOM.render(
-  <KakaoLogin
-    jsKey="4a5607f2dc1622d91b7137fff35a464d"
-    onSuccess={success}
-    onFailure={failure}
-  />, appRoot
-);
-```
-
-### Styling Button with class
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import KakaoLogin from 'react-kakao-login';
-
-const success = (response) => {
-  console.log(response);
-};
-
-const failure = (error) => {
-  console.log(error);
-};
-
-const appRoot = document.getElementById('react-kakao-login');
-
-ReactDOM.render(
-  <KakaoLogin
-    jsKey="4a5607f2dc1622d91b7137fff35a464d"
-    onSuccess={success}
-    onFailure={failure}
-    className="kakao-login-button"
-  />, appRoot
-);
-```
-
-### Customize Button's content with Other Component
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import KakaoLogin from '../src';
 
+const key = '4a5607f2dc1622d91b7137fff35a464d';
+
 const success = (response) => {
   console.log(response);
 };
@@ -98,47 +50,86 @@ const failure = (error) => {
 
 const appRoot = document.getElementById('react-kakao-login');
 
-class LoginButton extends React.Component {
-  render() {
-    const style = {
-      marginRight: '4px',
-    };
+const Italic = styled.i`
+  color: #3c1e1e;
+  font-size: 20px;
+  font-weight: 700;
+`;
 
-    return (
-      <div>
-        <i className="xi-kakao" style={style} />
-        카카오톡으로 로그인하기
-      </div>
-    );
-  }
-}
+const StyledKakaoLogin = styled(KakaoLogin)`
+  display: inline-block;
+  padding: 0;
+  width: 222px;
+  height: 49px;
+  line-height: 49px;
+  color: #3C1E1E;
+  background-color: #FFEB00;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  text-align: center;
+`;
 
 ReactDOM.render(
-  <KakaoLogin
-    jsKey="4a5607f2dc1622d91b7137fff35a464d"
-    onSuccess={success}
-    onFailure={failure}
-    buttonComponent={<LoginButton />}
-    getProfile={true}
-  />, appRoot
+  <Fragment>
+    <p><code>No options</code></p>
+    <KakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+    />
+    <p>Change button text with <code>buttonText</code></p>
+    <KakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+      buttonText="Button Text"
+    />
+    <p>Use style that is defined in KakaoLogin component with <code>useDefaultStyle</code></p>
+    <KakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+      useDefaultStyle
+    />
+    <p>Pass component that is styled as <code>children</code></p>
+    <KakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+    >
+      <Italic>Children</Italic>
+    </KakaoLogin>
+    <p>Pass <code>className</code> to style component</p>
+    <KakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+      className="css-with-class"
+    />
+    <p>Pass <code>render</code> function to render fully customized component</p>
+    <KakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+      render={props => (
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            props.onClick();
+          }}
+        >
+          Render Prop
+        </a>
+      )}
+    />
+    <p>Use <code>third party</code>, like <code>styled-components</code></p>
+    <StyledKakaoLogin
+      jsKey={key}
+      onSuccess={success}
+      onFailure={failure}
+    />
+  </Fragment>, appRoot
 );
 ```
-
-### Kakao button without styling
-
-If you're providing all your own custom styling, you can use the render prop build. This build doesn't include any CSS or additional code needed to customise the look of the button, and instead leaves that entirely up to you.
-
-```js
-<KakaoLogin
-  jsKey="4a5607f2dc1622d91b7137fff35a464d"
-  onSuccess={success}
-  onFailure={failure}
-  render={renderProps => (
-    <button onClick={renderProps.onClick}>This is my custom kakao button</button>
-  )}
-/>
-```
-
-The `render` function will be passed the following properties for you to use:
-
-- `onClick`
