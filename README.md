@@ -47,10 +47,7 @@ Refer demo
 ---
 
 <p align="center">
-  <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/dQ3sAxl" rel="noopener noreferrer">
-    <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
-    <span style="margin-left:15px;font-size:28px !important;">
-      Buy me a coffee
-    </span>
+  <a href="https://www.buymeacoffee.com/dQ3sAxl" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217" height="51" />
   </a>
 </p>
