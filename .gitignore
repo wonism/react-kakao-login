@@ -18,6 +18,8 @@ bower_components/
 *.log
 *.gz
 dist
+coverage/*
+!coverage/*.svg
 
 # idea
 .idea/

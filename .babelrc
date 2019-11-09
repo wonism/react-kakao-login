@@ -1,5 +1,23 @@
 {
-  "presets": ["env", "react"],
-  "plugins": ["transform-class-properties"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "> 10%", "ie 9"]
+        }
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+  ]
+  "env": {
+    "development": {
+      "plugins": ["babel-plugin-styled-components"]
+    }
+  }
 }
-

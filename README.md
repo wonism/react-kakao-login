@@ -1,6 +1,16 @@
 # React Kakaotalk Login
 > A Component for Kakaotalk Login
 
+[![NPM](https://img.shields.io/npm/v/badge-size.svg?style=flat)](https://npmjs.org/package/badge-size)
+[![Build Status](https://travis-ci.org/wonism/react-kakao-login.svg?branch=master)](https://travis-ci.org/wonism/react-kakao-login)
+![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react-kakao-login.svg)
+![Test coverage for branches](./badge-branches.svg)
+![Test coverage for functions](./badge-functions.svg)
+![Test coverage for lines](./badge-lines.svg)
+![Test coverage for statements](./badge-statements.svg)
+![Gitmoji](
+[![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
+
 ## Getting Started
 ```sh
 $ cd /PROJECT/PATH
@@ -19,117 +29,29 @@ $ npm run bundle
 ```
 
 ## Parameters
-| Parameter        | Type       | Remarks                                         |
-|:-----------------|:-----------|:------------------------------------------------|
-| jsKey            | string     | Required                                        |
-| onSuccess        | function   | Required                                        |
-| onFailure        | function   | Required                                        |
-| version          | string     | One of [`v1`, `v2`]. default is `v2`            |
-| getProfile       | bool       | If you want to get User's information, set TRUE |
-| useDefaultStyle  | bool       | Optional                                        |
-| buttonText       | string     | Optional                                        |
-| className        | string     | Optional                                        |
-| render           | function   | Optional                                        |
+| Parameter        | Type       | Remarks                                                       |
+|:-----------------|:-----------|:--------------------------------------------------------------|
+| jsKey            | string     | Required                                                      |
+| onSuccess        | function   | Required                                                      |
+| onFailure        | function   | Required                                                      |
+| version          | string     | One of [`v1`, `v2`]. default is `v2`                          |
+| throughTalk      | bool       | If true, Open Kakao Talk instead of new browser tab           |
+| getProfile       | bool       | If true, Can get user's information                           |
+| useDefaultStyle  | bool       | If true, Use default style                                    |
+| buttonText       | string     | `textContent` of `button`                                     |
+| className        | string     | `button`'s `className`                                        |
+| render           | function   | Can render with return of this instead of button as a child   |
 
-## How to use?
-```js
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import KakaoLogin from '../src';
+## Usage
+Refer demo
 
-const key = '4a5607f2dc1622d91b7137fff35a464d';
+---
 
-const success = (response) => {
-  console.log(response);
-};
-
-const failure = (error) => {
-  console.log(error);
-};
-
-const appRoot = document.getElementById('react-kakao-login');
-
-const Italic = styled.i`
-  color: #3c1e1e;
-  font-size: 20px;
-  font-weight: 700;
-`;
-
-const StyledKakaoLogin = styled(KakaoLogin)`
-  display: inline-block;
-  padding: 0;
-  width: 222px;
-  height: 49px;
-  line-height: 49px;
-  color: #3C1E1E;
-  background-color: #FFEB00;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  text-align: center;
-`;
-
-ReactDOM.render(
-  <Fragment>
-    <p><code>No options</code></p>
-    <KakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-    />
-    <p>Change button text with <code>buttonText</code></p>
-    <KakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-      buttonText="Button Text"
-    />
-    <p>Use style that is defined in KakaoLogin component with <code>useDefaultStyle</code></p>
-    <KakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-      useDefaultStyle
-    />
-    <p>Pass component that is styled as <code>children</code></p>
-    <KakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-    >
-      <Italic>Children</Italic>
-    </KakaoLogin>
-    <p>Pass <code>className</code> to style component</p>
-    <KakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-      className="css-with-class"
-    />
-    <p>Pass <code>render</code> function to render fully customized component</p>
-    <KakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-      render={props => (
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            props.onClick();
-          }}
-        >
-          Render Prop
-        </a>
-      )}
-    />
-    <p>Use <code>third party</code>, like <code>styled-components</code></p>
-    <StyledKakaoLogin
-      jsKey={key}
-      onSuccess={success}
-      onFailure={failure}
-    />
-  </Fragment>, appRoot
-);
-```
+<p align="center">
+  <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/dQ3sAxl" rel="noopener noreferrer">
+    <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
+    <span style="margin-left:15px;font-size:28px !important;">
+      Buy me a coffee
+    </span>
+  </a>
+</p>

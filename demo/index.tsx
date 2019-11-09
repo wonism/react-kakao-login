@@ -1,17 +1,13 @@
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
 import styled from 'styled-components';
 import KakaoLogin from '../src';
 
 const key = '4a5607f2dc1622d91b7137fff35a464d';
 
-const success = (response) => {
-  console.log(response); // eslint-disable-line no-console
-};
+const success = console.log;
 
-const failure = (error) => {
-  console.log(error); // eslint-disable-line no-console
-};
+const failure = console.error;
 
 const appRoot = document.getElementById('react-kakao-login');
 
@@ -35,8 +31,8 @@ const StyledKakaoLogin = styled(KakaoLogin)`
   text-align: center;
 `;
 
-ReactDOM.render(
-  <Fragment>
+const App = () => (
+  <>
     <p><code>No options</code></p>
     <pre>
       {`
@@ -52,16 +48,20 @@ ReactDOM.render(
       onSuccess={success}
       onFailure={failure}
     />
-    <p>Change button text with <code>buttonText</code></p>
+    <p>
+      Change button text with
+      &nbsp;
+      <code>
+        buttonText
+      </code>
+    </p>
     <pre>
-      {`
-<KakaoLogin
+      {`<KakaoLogin
   jsKey={key}
   onSuccess={success}
   onFailure={failure}
   buttonText="Button Text"
-/>
-      `}
+/>`}
     </pre>
     <KakaoLogin
       jsKey={key}
@@ -69,16 +69,20 @@ ReactDOM.render(
       onFailure={failure}
       buttonText="Button Text"
     />
-    <p>Use style that is defined in KakaoLogin component with <code>useDefaultStyle</code></p>
+    <p>
+      Use style that is defined in KakaoLogin component with
+      &nbsp;
+      <code>
+        useDefaultStyle
+      </code>
+    </p>
     <pre>
-      {`
-<KakaoLogin
+      {`<KakaoLogin
   jsKey={key}
   onSuccess={success}
   onFailure={failure}
   useDefaultStyle
-/>
-      `}
+/>`}
     </pre>
     <KakaoLogin
       jsKey={key}
@@ -86,35 +90,47 @@ ReactDOM.render(
       onFailure={failure}
       useDefaultStyle
     />
-    <p>Pass component that is styled as <code>children</code></p>
+    <p>
+      Pass component that is styled as
+      &nbsp;
+      <code>
+        children
+      </code>
+    </p>
     <pre>
-      {`
-<KakaoLogin
+      {`<KakaoLogin
   jsKey={key}
   onSuccess={success}
   onFailure={failure}
 >
   <Italic>Children</Italic>
-</KakaoLogin>
-      `}
+</KakaoLogin>`}
     </pre>
     <KakaoLogin
       jsKey={key}
       onSuccess={success}
       onFailure={failure}
     >
-      <Italic>Children</Italic>
+      <Italic>
+        Children
+      </Italic>
     </KakaoLogin>
-    <p>Pass <code>className</code> to style component</p>
+    <p>
+      Pass
+      &nbsp;
+      <code>
+        className
+      </code>
+      &nbsp;
+      to style component
+    </p>
     <pre>
-      {`
-<KakaoLogin
+      {`<KakaoLogin
   jsKey={key}
   onSuccess={success}
   onFailure={failure}
   className="css-with-class"
-/>
-      `}
+/>`}
     </pre>
     <KakaoLogin
       jsKey={key}
@@ -122,10 +138,17 @@ ReactDOM.render(
       onFailure={failure}
       className="css-with-class"
     />
-    <p>Pass <code>render</code> function to render fully customized component</p>
+    <p>
+      Pass
+      &nbsp;
+      <code>
+        render
+      </code>
+      &nbsp;
+      function to render fully customized component
+    </p>
     <pre>
-      {`
-<KakaoLogin
+      {`<KakaoLogin
   jsKey={key}
   onSuccess={success}
   onFailure={failure}
@@ -140,14 +163,13 @@ ReactDOM.render(
       Render Prop
     </a>
   )}
-/>
-      `}
+/>`}
     </pre>
     <KakaoLogin
       jsKey={key}
       onSuccess={success}
       onFailure={failure}
-      render={props => (
+      render={(props: any) => (
         <a
           href="#"
           onClick={(e) => {
@@ -159,10 +181,20 @@ ReactDOM.render(
         </a>
       )}
     />
-    <p>Use <code>third party</code>, like <code>styled-components</code></p>
+    <p>
+      Use
+      &nbsp;
+      <code>
+        third party
+      </code>
+      , like
+      &nbsp;
+      <code>
+        styled-components
+      </code>
+    </p>
     <pre>
-      {`
-import styled from 'styled-components';
+      {`import styled from 'styled-components';
 
 const StyledKakaoLogin = styled(KakaoLogin)\`
   display: inline-block;
@@ -182,13 +214,14 @@ const StyledKakaoLogin = styled(KakaoLogin)\`
   jsKey={key}
   onSuccess={success}
   onFailure={failure}
-/>
-      `}
+/>`}
     </pre>
     <StyledKakaoLogin
       jsKey={key}
       onSuccess={success}
       onFailure={failure}
     />
-  </Fragment>, appRoot
+  </>
 );
+
+render(<App />, appRoot);

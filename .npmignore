@@ -17,6 +17,8 @@ node_modules/
 bower_components/
 *.log
 *.gz
+coverage/*
+!coverage/*.svg
 
 # idea
 .idea/
@@ -29,10 +31,18 @@ bower_components/
 .sass-cache
 
 # dev
-demo
+node_modules
 src
+demo
 .babelrc
 .gitignore
 .travis.yml
-webpack.config.dev.js
-webpack.config.dist.js
+tsconfig.json
+rollup.config.js
+rollup.dev.config.js
+setupEnzyme.ts
+jest.config.js
+.travis.yml
+.gitattributes
+.eslintrc.js
+.eslintignore
