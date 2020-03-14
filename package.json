@@ -18,14 +18,17 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --bail --coverage --config jest.config.js",
-    "test:watch": "jest --watch --coverage --config jest.config.js",
+    "test:watch": "jest --watch --config jest.config.js",
     "test:badges": "jest-coverage-badges",
     "start": "rollup -c rollup.dev.config.js",
     "clean": "rm -rf dist",
-    "build": "rimraf dist && mkdirp dist && rollup -c rollup.config.js",
+    "build": "rimraf dist && mkdirp dist && rollup -c rollup.prod.config.js",
+    "build:docs": "NODE_ENV=production npm start",
     "lint": "eslint -c .eslintrc.js --fix './src/**/*.ts{,x}'",
     "prepare": "npm run lint && npm t && npm run build",
-    "precommit": "npm run lint && npm t && npm run test:badges"
+    "precommit": "npm run lint && npm t && npm run test:badges",
+    "docs": "npm run build:docs && push-dir --dir=demo --branch=gh-pages",
+    "semantic-release": "semantic-release"
   },
   "author": "wonism <yocee57@gmail.com> (https://wonism.github.io)",
   "license": "MIT",
@@ -36,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/wonism/react-kakao-login/issues"
   },
-  "homepage": "https://wonism.github.io/open-sources/react-kakao-login",
+  "homepage": "https://wonism.github.io/react-kakao-login",
   "peerDependencies": {
     "react": ">= 15.3.0"
   },
@@ -47,6 +50,10 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "@babel/preset-typescript": "^7.7.2",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.4",
+    "@semantic-release/npm": "^7.0.4",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.22",
@@ -72,7 +79,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "husky": "^3.0.9",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "jest-coverage-badges": "^1.1.2",
     "jsdom": "^15.2.1",
     "mkdirp": "^0.5.1",
@@ -90,6 +97,8 @@
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-typescript2": "^0.24.3",
+    "semantic-release": "^17.0.4",
+    "styled-components": "^5.0.1",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
   },

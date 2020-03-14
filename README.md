@@ -1,7 +1,7 @@
 # React Kakaotalk Login
 > A Component for Kakaotalk Login
 
-[![NPM](https://img.shields.io/npm/v/badge-size.svg?style=flat)](https://npmjs.org/package/badge-size)
+[![NPM](https://img.shields.io/badge/react-kakao-login)](https://npmjs.org/package/react-kakao-login)
 [![Build Status](https://travis-ci.org/wonism/react-kakao-login.svg?branch=master)](https://travis-ci.org/wonism/react-kakao-login)
 ![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react-kakao-login.svg)
 ![Test coverage for branches](https://github.com/wonism/react-kakao-login/blob/master/coverage/badge-branches.svg)
@@ -18,9 +18,8 @@ $ npm i -S react react-dom react-kakao-login
 
 ## Development
 ```sh
-$ npm run demo
+$ npm start
 ```
-- Open [localhost:8888](http://localhost:8888)
 
 ## Production Bundle
 ```sh
@@ -42,12 +41,4 @@ $ npm run bundle
 | render           | function   | Can render with return of this instead of button as a child   |
 
 ## Usage
-Refer demo
-
----
-
-<p align="center">
-  <a href="https://www.buymeacoffee.com/dQ3sAxl" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217" height="51" />
-  </a>
-</p>
+https://wonism.github.io/react-kakao-login

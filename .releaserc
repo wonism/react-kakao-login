@@ -1,0 +1,15 @@
+{
+  "verifyConditions": [
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ],
+  "prepare": ["@semantic-release/npm", "@semantic-release/git"],
+  "publish": [
+    "@semantic-release/npm",
+    "@semantic-release/github",
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "npm run docs"
+    }
+  ]
+}

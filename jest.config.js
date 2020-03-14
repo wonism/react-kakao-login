@@ -1,7 +1,7 @@
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
 const { defaults: tsjPreset } = require('ts-jest/presets');
 
-const { compilerOptions } = require('./tsconfig');
+const { compilerOptions } = require('./tsconfig.dev');
 
 module.exports = {
   transform: {
@@ -15,7 +15,7 @@ module.exports = {
     __PATH_PREFIX__: '',
     'ts-jest': {
       diagnostics: true,
-      tsConfig: 'tsconfig.json',
+      tsConfig: 'tsconfig.dev.json',
       diagnostics: false,
       autoMapModuleNames: true,
     },

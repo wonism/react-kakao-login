@@ -25,7 +25,6 @@
     "target": "es5"
   },
   "typeRoots": ["src", "node_modules/@types"],
-  "files": ["index.d.ts"],
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "*.spec.tsx"]
 }
