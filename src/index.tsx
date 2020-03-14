@@ -1,5 +1,5 @@
 import React, { CSSProperties, PureComponent } from 'react';
-import { KakaoLoginProps, KakaoLoginResponseV2 } from 'react-kakao-login';
+import { KakaoLoginProps, KakaoLoginResponseV2 } from './types';
 
 declare global {
   interface Window {

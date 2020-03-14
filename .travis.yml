@@ -1,4 +1,22 @@
 language: node_js
+cache:
+  directories:
+    - ~/.npm
 node_js:
-  - "10.16.0"
-script: npm run precommit
+  - "10"
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+install:
+  - npm i
+before_script:
+  - npm prune
+  - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+script:
+  - npm run prepare
+deploy:
+  provider: script
+  script: bash ./.deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
