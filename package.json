@@ -79,7 +79,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "husky": "^3.0.9",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "jest-coverage-badges": "^1.1.2",
     "jsdom": "^15.2.1",
     "mkdirp": "^0.5.1",
