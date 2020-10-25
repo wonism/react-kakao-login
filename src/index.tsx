@@ -1,97 +1,80 @@
-import React, { CSSProperties, PureComponent } from 'react';
-import { KakaoLoginProps, KakaoLoginResponseV2 } from './types';
+import React from "react";
+import { loadSdk, DEFAULT_STYLE } from "./utils";
+import { ExtendedWindow, Props, State } from "./types";
 
-declare global {
-  interface Window {
-    Kakao: any;
-  }
-}
+declare let window: ExtendedWindow;
 
-export default class KakaoLogin extends PureComponent<KakaoLoginProps> {
-  componentDidMount() {
-    const { jsKey } = this.props;
+export default class KakaoLogin extends React.PureComponent<Props, State> {
+  state = { isLoggedIn: false };
 
-    ((id, cb) => {
-      if (document.getElementById(id) == null) {
-        const js: HTMLScriptElement = document.createElement('script');
+  public static DEFAULT_STYLE = DEFAULT_STYLE;
 
-        js.id = id;
-        js.src = '//developers.kakao.com/sdk/js/kakao.min.js';
-        js.onload = cb;
-
-        document.body.append(js);
-      }
-    })('kakao-sdk', () => {
-      window.Kakao.init(jsKey);
-    });
+  public async componentDidMount() {
+    await loadSdk();
+    window.Kakao.init(this.props.token);
   }
 
-  onBtnClick = () => {
+  private onButtonClick = () => {
     const {
-      throughTalk = false,
-      version = 'v2',
-      getProfile = false,
+      throughTalk = true,
+      persistAccessToken = true,
+      needProfile = true,
       onSuccess,
-      onFailure,
+      onFail,
     } = this.props;
 
-    if (window.Kakao) {
-      window.Kakao.Auth.login({
-        throughTalk,
-        success: (response: KakaoLoginResponseV2 | any) => {
-          if (getProfile) {
-            window.Kakao.API.request({
-              url: `/${version}/user/me`,
-              success: (profile: string) => {
-                const result = { response, profile };
-                onSuccess(result);
-              },
-              fail: onFailure,
-            });
-          } else {
-            onSuccess({ response });
-          }
-        },
-        fail: onFailure,
-      });
-    }
-  }
+    window.Kakao?.Auth.login({
+      throughTalk,
+      persistAccessToken,
+      success: (response) => {
+        this.setState({ isLoggedIn: true });
 
-  static DEFAULT_STYLE: CSSProperties = {
-    display: 'inline-block',
-    padding: '0px',
-    width: '222px',
-    height: '49px',
-    lineHeight: '49px',
-    color: 'rgb(60, 30, 30)',
-    backgroundColor: 'rgb(255, 235, 0)',
-    border: '1px solid transparent',
-    borderRadius: '3px',
-    fontSize: '16px',
-    textAlign: 'center',
+        if (needProfile) {
+          window.Kakao?.API.request({
+            url: "/v2/user/me",
+            success: (profile) => {
+              const result = { response, profile };
+              onSuccess(result);
+            },
+            fail: onFail,
+          });
+        } else {
+          onSuccess({ response });
+        }
+      },
+      fail: onFail,
+    });
   };
 
-  render() {
+  private onLogout = () => {
+    window.Kakao?.Auth.logout(() => {
+      this.props.onLogout?.(window.Kakao?.Auth.getAccessToken());
+      this.setState({ isLoggedIn: false });
+    });
+  };
+
+  public render() {
+    const { isLoggedIn } = this.state;
+    const onClick = isLoggedIn ? this.onLogout : this.onButtonClick;
     const {
       render,
-      className = '',
-      useDefaultStyle = false,
-      children = null,
-      buttonText = 'Login with Kakao',
+      className = "",
+      style = DEFAULT_STYLE,
+      children = "카카오로 로그인하기",
     } = this.props;
 
-    if (typeof render === 'function') {
-      return render({ onClick: this.onBtnClick });
+    if (typeof render === "function") {
+      return render({ onClick });
     }
 
     return (
       <button
         type="button"
         className={className}
-        onClick={this.onBtnClick}
-        style={useDefaultStyle ? KakaoLogin.DEFAULT_STYLE : undefined}
+        onClick={onClick}
+        style={style}
       >
-        {children || buttonText}
+        {children}
       </button>
     );
   }
