@@ -1,6 +1,6 @@
 {
   "name": "react-kakao-login",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "keyword": [
     "react",
     "reactjs",
@@ -47,6 +47,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@storybook/addon-actions": "^6.0.22",
     "@storybook/addon-links": "^6.0.22",
+    "@storybook/addon-storysource": "^6.0.27",
     "@storybook/addons": "^6.0.22",
     "@storybook/react": "^6.0.22",
     "@testing-library/jest-dom": "^5.11.4",
