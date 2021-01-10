@@ -41,6 +41,7 @@ type LogoutCallback = () => void;
 
 interface KakaoAuth {
   login: (params: LoginParams) => void;
+  loginForm: (params: LoginParams) => void;
   logout: (callback: LogoutCallback) => void;
   getAccessToken: () => string | null;
 }
@@ -118,7 +119,7 @@ type Scope =
 
 export interface Props {
   /** 앱의 고유 자바스크립트 키 */
-  token: string; // ref: https://developers.kakao.com/docs/latest/ko/getting-started/sdk-js
+  token: string; // @see: https://developers.kakao.com/docs/latest/ko/getting-started/sdk-js
   /** 로그인 성공 후 콜백 */
   onSuccess: (response: {
     response: LoginResponse;
@@ -134,6 +135,8 @@ export interface Props {
   needProfile?: boolean;
   /** 카카오톡 앱을 통한 인증을 할지 여부 @default true */
   throughTalk?: boolean;
+  /** loginForm 을 이용할지 여부 @default false */
+  useLoginForm?: boolean; // @see: https://developers.kakao.com/sdk/reference/js/release/Kakao.Auth.html#.loginForm__anchor
   /** 세션 종료 후에도 액세스 토큰 사용할 수 있도록 로컬스토리지에 저장할지 여부 @default: true */
   persistAccessToken?: boolean;
   /** 하위 컴퍼넌트 @default 카카오로 로그인하기 */

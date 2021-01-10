@@ -17,6 +17,16 @@ export const Default = () => (
   />
 );
 
+export const UseLoginForm = () => (
+  <KakaoLogin
+    token={token}
+    onSuccess={console.log}
+    onFail={console.error}
+    onLogout={console.info}
+    useLoginForm
+  />
+);
+
 export const WithChildren = () => (
   <KakaoLogin
     token={token}

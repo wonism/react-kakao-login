@@ -19,11 +19,14 @@ export default class KakaoLogin extends React.PureComponent<Props, State> {
       throughTalk = true,
       persistAccessToken = true,
       needProfile = true,
+      useLoginForm = false,
       onSuccess,
       onFail,
     } = this.props;
 
-    window.Kakao?.Auth.login({
+    const method = useLoginForm ? "loginForm" : "login";
+
+    (window.Kakao?.Auth)[method]({
       throughTalk,
       persistAccessToken,
       success: (response) => {
