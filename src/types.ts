@@ -68,8 +68,8 @@ interface KakaoAccount {
   birthday: string;
   /** 태어난 해, YYYY 형식 */
   birthyear: string;
-  /** 성별, femail/mail */
-  gender: "femail" | "mail";
+  /** 성별, female/male */
+  gender: "female" | "male";
   /** 전화번호. 카카오톡에 등록된 전화번호 */
   phone_number: string;
   /** 연계정보. 암호화된 이용자 확인 값 */
