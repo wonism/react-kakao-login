@@ -1,9 +1,4 @@
-import {
-  CSSProperties,
-  ReactChild,
-  ReactElement,
-  ComponentElement,
-} from "react";
+import { CSSProperties, ReactChild, ReactNode } from "react";
 interface KakaoError {
   error: string;
   error_description: string;
@@ -144,11 +139,7 @@ export interface Props {
   /** 스타일 @default 기본 스타일 */
   style?: CSSProperties;
   /** 커스텀 컴퍼넌트 렌더하기 */
-  render?: ({
-    onClick,
-  }: {
-    onClick: () => void;
-  }) => ComponentElement<any, any> | Element | ReactElement;
+  render?: ({ onClick }: { onClick: () => void }) => ReactNode;
   /** 클래스 이름 */
   className?: string;
 }

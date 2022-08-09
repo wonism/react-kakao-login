@@ -13,9 +13,7 @@
     "react-kakaotalk-login"
   ],
   "description": "Login with Kakaotalk",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "types": "lib/index.d.ts",
+  "main": "src/index.tsx",
   "scripts": {
     "clean": "rimraf lib && rimraf storybook-static",
     "start": "npm run storybook",
